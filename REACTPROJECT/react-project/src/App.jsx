@@ -3,35 +3,41 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import movies from './movies.json'
+
+function NavBar() {
+  const [status, setStatus] = useState(true);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>My React Project</h1>
-      {/* <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div> */}
-      <div className='NavBar'>
-        <p>Assignment 1</p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <header>
+       <h1>Assignment 1</h1>
+      <button name="login_button" id="login_button" onClick={() => setStatus(!status)}>{status ? "Login" : "Log Out"}</button>
+    </header>
+  )
+}
+
+function Movie(props) {
+  return (
+    <p>{props.name} {props.year} {props.rating}</p>
+  )
+}
+
+function MovieList(props) {
+  for (let movie in props.movieList) {
+    return (
+      <div>{Movie(movie)}</div>
+    )
+  }
+
+}
+
+function App() {
+
+  return (
+    <div>
+      <NavBar />
+      <MovieList movieList={movies}/>
+    </div>
   )
 }
 

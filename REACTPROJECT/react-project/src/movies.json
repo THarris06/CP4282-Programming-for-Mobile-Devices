@@ -1,0 +1,14 @@
+{
+  "movies": [
+    {
+        "name": "Inception",
+        "year": 2010,
+        "rating": 8.8
+    },
+    {
+        "name": "The Matrix",
+        "year": 1999,
+        "rating": 8.7
+    }
+  ]
+}
