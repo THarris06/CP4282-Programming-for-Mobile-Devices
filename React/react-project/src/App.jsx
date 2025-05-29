@@ -1,9 +1,27 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-import movies from './movies.json'
+import movieData from './movies.json'
+
+function Movie(props) {
+  return (
+    <>
+      <h3>Name: {props.name}, Release Year: {props.year}, Rating: {props.rating}</h3>
+    </>
+  )
+}
+
+function MovieList({data}) {
+  return (
+    <>
+    {
+      data.map( (movie) => {
+        return <Movie name={movie.name} year={movie.year} rating={movie.rating}/>
+      })
+    }
+    </>
+  )
+}
 
 function NavBar() {
   const [status, setStatus] = useState(true);
@@ -16,27 +34,12 @@ function NavBar() {
   )
 }
 
-function Movie(props) {
-  return (
-    <p>{props.name} {props.year} {props.rating}</p>
-  )
-}
-
-function MovieList(props) {
-  for (let movie in props.movieList) {
-    return (
-      <div>{Movie(movie)}</div>
-    )
-  }
-
-}
-
 function App() {
 
   return (
     <div>
       <NavBar />
-      <MovieList movieList={movies}/>
+      <MovieList data={movieData.movies}/>
     </div>
   )
 }
