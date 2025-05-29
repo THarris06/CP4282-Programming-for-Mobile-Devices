@@ -27,20 +27,23 @@ function NavBar() {
   const [status, setStatus] = useState(true);
 
   return (
-    <header>
-       <h1>Assignment 1</h1>
+    <>
+      <h1>Assignment 1</h1>
       <button name="login_button" id="login_button" onClick={() => setStatus(!status)}>{status ? "Login" : "Log Out"}</button>
-    </header>
+    </>
   )
 }
 
 function App() {
 
   return (
-    <div>
+    <>
       <NavBar />
-      <MovieList data={movieData.movies}/>
-    </div>
+      <div className='movie_list'>
+        <MovieList data={movieData.movies} />
+      </div>
+      <h3>CP 4282 - Tyson Harris</h3>
+    </>
   )
 }
 
